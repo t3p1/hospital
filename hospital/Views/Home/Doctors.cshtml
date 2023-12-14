@@ -1,0 +1,101 @@
+﻿@{
+}
+@model List<Doctor>
+@if (Model != null)
+{
+    <div class="table col-10">
+        <button id="showFormButton">Добавить врача</button>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="form-container">
+                    <h3>Добавить нового врача</h3>
+                    <form method="post" action="/Doctors/Add" id="doctorForm">
+                        <div class="form-group">
+                            <label for="name">ФИО:</label>
+                            <input type="text" id="name" name="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон:</label>
+                            <input type="text" id="phone" name="Phone" required>
+                        </div>
+                        <button type="submit">Добавить врача</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById("showFormButton").addEventListener("click", function () {
+                document.getElementById("addDoctorForm").style.display = "block";
+            });
+        </script>
+        <div class="row title-table">
+            <h2>Специалисты</h2>
+            <div class="col-2">Номер</div>
+            <div class="col-2">ФИО</div>
+            <div class="col-2">Номер телефона</div>
+            <div class="col-4">Управление</div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="row table">
+                <div class="col-2">@item.Id</div>
+                <div class="col-2">@item.Name</div>
+                <div class="col-2">@item.Phone</div>
+                <div class="col-4"><a href="javascript:void(0);" onclick="openEditForm('@item.Id', '@item.Name', '@item.Phone')">Редактировать</a></div>
+            </div>
+        }
+    </div>
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <div class="form-container">
+                <h3>Редактировать врача</h3>
+                <form method="post" action="/Doctors/Edit" id="editDoctorForm">
+                    <input type="hidden" id="editId" name="Id" value="">
+                    <div class="form-group">
+                        <label for="editName">ФИО:</label>
+                        <input type="text" id="editName" name="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPhone">Телефон:</label>
+                        <input type="text" id="editPhone" name="Phone" required>
+                    </div>
+                    <button type="submit">Сохранить изменения</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>No data available</p>
+}
+<script>
+    document.getElementById("showFormButton").addEventListener("click", function () {
+        document.getElementById("modal").style.display = "block";
+    });
+
+    document.getElementsByClassName("close")[0].addEventListener("click", function () {
+        document.getElementById("modal").style.display = "none";
+    });
+
+    window.onclick = function (event) {
+        if (event.target == document.getElementById("modal")) {
+            document.getElementById("modal").style.display = "none";
+        }
+    };
+</script>
+<script>
+    function openEditForm(id, name, phone) {
+        document.getElementById("editId").value = id;
+        document.getElementById("editName").value = name;
+        document.getElementById("editPhone").value = phone;
+        document.getElementById("editModal").style.display = "block";
+    }
+
+    function closeEditModal() {
+        document.getElementById("editModal").style.display = "none";
+    }
+</script>

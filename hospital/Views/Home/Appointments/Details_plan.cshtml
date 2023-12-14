@@ -1,0 +1,20 @@
+﻿@model dynamic
+
+<div class="details-container">
+    <h3>Детали плана лечения</h3>
+    <table>
+        <tr>
+            <td>Номер плана:</td>
+            <td>@ViewBag.PlanDetails.PlanId</td>
+        </tr>
+        <tr>
+            <td>Диагноз:</td>
+            <td>@ViewBag.PlanDetails.DiagnosName</td>
+        </tr>
+        <tr>
+            <td>Лечение:</td>
+            <td>@ViewBag.PlanDetails.TreatmentPlan</td>
+        </tr>
+    </table>
+</div>
+

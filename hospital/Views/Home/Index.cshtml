@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Главная страница сайта";
+}
+@model List<DentalHo>
+@inject dental_hospitalContext _context
+@if (Model != null)
+{
+    <div class="table col-10">
+
+        <button id="addVisitButton">Добавить визит</button>
+
+        <div id="addVisitForm" style="display: none;">
+            <form method="post" action="@Url.Action("AddVisitData", "DentalHoes")">
+                <label for="patientId">Выберите пациента:</label>
+                <select id="patientId" name="patientId">
+                    @foreach (var patient in _context.Patients)
+                    {
+                        <option value="@patient.Id">@patient.Name</option>
+                    }
+                </select>
+
+                <label for="doctorId">Выберите врача:</label>
+                <select id="doctorId" name="doctorId">
+                    @foreach (var doctor in _context.Doctors)
+                    {
+                        <option value="@doctor.Id">@doctor.Name</option>
+                    }
+                </select>
+                <label for="diagnosisId">Выберите диагноз:</label>
+                <select id="diagnosisId" name="diagnosisId">
+                    @foreach (var diagnosis in _context.Diagnoses)
+                    {
+                        <option value="@diagnosis.Id">@diagnosis.Diagnosis1</option>
+                    }
+                </select>
+
+                <button type="submit">Добавить визит</button>
+            </form>
+            <script>
+                var addVisitButton = document.getElementById('addVisitButton');
+                var addVisitForm = document.getElementById('addVisitForm');
+                addVisitButton.addEventListener('click', function () {
+                    if (addVisitForm.style.display === 'none') {
+                        addVisitForm.style.display = 'block';
+                    } else {
+                        addVisitForm.style.display = 'none';
+                    }
+                });
+            </script>
+        </div>
+        <div class="filters col-10">
+            <form method="get" action="@Url.Action("Index", "DentalHoes")">
+                <label for="priceFilter">Фильтр по цене:</label>
+                <select id="priceFilter" name="priceFilter">
+                    <option value="1">По возрастанию</option>
+                    <option value="0">По убыванию</option>
+                </select>
+
+                <label for="search">Поиск:</label>
+                <input type="text" id="search" name="search">
+
+                <button type="submit">Применить фильтры</button>
+                <a href="@Url.Action("Index", "DentalHoes")">Сбросить фильтры</a>
+            </form>
+        </div>
+        <div class="row title-table">
+            <h2>Стоматологическая больница</h2>
+            <div class="col-1">Время</div>
+            <div class="col-2">Врач</div>
+            <div class="col-2">Пациент</div>
+            <div class="col-2">Диагноз</div>
+            <div class="col-1">Цена</div>
+            <div class="col-2">Управление</div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="row table">
+                <div class="col-1">@item.VisitNavigation.Stamp</div>
+                <div class="col-2">@item.DoctorNavigation.Name</div>
+                <div class="col-2">@item.PatientNavigation.Name</div>
+                <div class="col-2">@item.VisitNavigation.PlanNavigation.DiagnosisNavigation.Diagnosis1</div>
+                <div class="col-1">@item.VisitNavigation.PlanNavigation.DiagnosisNavigation.Price</div>
+                <div class="col-2">
+                    <a href="@Url.Action("Details", "DentalHoes", new { visitId = item.VisitNavigation.Id, doctorId = item.DoctorNavigation.Id, patientId = item.PatientNavigation.Id })">Подробнее</a>
+                </div>
+                
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No data available</p>
+}

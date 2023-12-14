@@ -1,0 +1,73 @@
+﻿@using System.Web;
+@model List<Diagnosis>
+@if (Model != null)
+{
+    <div class="table col-10">
+        <button id="showFormButton">Добавить диагноз</button>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="form-container">
+                    <h3>Добавить новый диагноз</h3>
+                    <form method="post" action="/Diagnoses/Add" id="diagnosisForm">
+                        <div class="form-group">
+                            <label for="diagnosis">Наименование диагноза:</label>
+                            <input type="text" id="diagnosisName" name="Diagnosis1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Описание:</label>
+                            <textarea id="description" name="Description" required style="width: 100%;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Цена:</label>
+                            <input type="number" id="price" name="Price" required>
+                        </div>
+                        <button type="submit">Добавить диагноз</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row title-table">
+            <h2>Диагнозы</h2>
+            <div class="col-1">Номер диагноза</div>
+            <div class="col-1">Диагноз</div>
+            <div class="col-1">Цена</div>
+            <div class="col-3">Описание</div>
+            <div class="col-4">Управление</div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="row table">
+                <div class="col-1">@item.Id</div>
+                <div class="col-1">@item.Diagnosis1</div>
+                <div class="col-1">@item.Price</div>
+                <div class="col-3">
+                    @{
+                        var truncatedDescription = item.Description.Length > 20 ? item.Description.Substring(0, 25) + "..." : item.Description;
+                        <div oninput="truncateText(this, 20);">@Html.Raw(HttpUtility.HtmlEncode(truncatedDescription))</div>
+                    }
+                </div>
+                <div class="col-4"><a href="@Url.Action("DetailsDiagnosis", "Diagnoses", new { id = item.Id })">Подробнее</a></div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No data available</p>
+}
+<script>
+    document.getElementById("showFormButton").addEventListener("click", function () {
+        document.getElementById("modal").style.display = "block";
+    });
+
+    document.getElementsByClassName("close")[0].addEventListener("click", function () {
+        document.getElementById("modal").style.display = "none";
+    });
+
+    window.onclick = function (event) {
+        if (event.target == document.getElementById("modal")) {
+            document.getElementById("modal").style.display = "none";
+        }
+    };
+</script>

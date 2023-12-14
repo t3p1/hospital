@@ -1,0 +1,24 @@
+﻿@model Diagnosis
+
+<div class="details-container">
+    <h3>Информация о диагнозе</h3>
+    <table>
+        <tr>
+            <td>Номер диагноза:</td>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <td>Диагноз:</td>
+            <td>@Model.Diagnosis1</td>
+        </tr>
+        <tr>
+            <td>Цена:</td>
+            <td>@Model.Price</td>
+        </tr>
+        <tr>
+            <td>Описание:</td>
+            <td>@Model.Description</td>
+        </tr>
+    </table>
+</div>
+

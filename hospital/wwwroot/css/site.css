@@ -1,0 +1,318 @@
+/*Глобально для всего проекта*/
+* {
+    font-family: 'Comfortaa', cursive;
+}
+
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #ffffff !important;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background: #aeaeae;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input {
+    padding: 10px 12px;
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #ececec;
+    line-height: 1.5rem;
+    color: #444444;
+    font-size: 1rem;
+}
+/*
+HEADER
+*/
+header {
+    background-color: #303036;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+    header nav a {
+        color: #ffffff;
+        text-decoration: none;
+        padding: 8px 15px;
+    }
+
+        header nav a:hover {
+            background-color: #303036;
+            transition: background-color 0.5s;
+            color: #fff;
+        }
+
+
+/*
+Footer
+*/
+footer {
+    background-color: #303036;
+    color: #d3d3d3;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+/*
+SIDEBAR
+*/
+
+.sidebar {
+    background: #303036;
+    min-height: 800px;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    color: #d3d3d3;
+}
+
+.sidebar ul a {
+    padding: 18px;
+    display: block;
+    border-bottom: 1px solid #ffffff;
+}
+
+.sidebar ul a:hover {
+    padding-left: 10px;
+    transition: all 0.3s;
+    color: #d3d3d3;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+}
+
+.table {
+    height: 100%;
+    padding: 20px;
+}
+
+.table .row div {
+    text-align:center;
+}
+
+.table h2 {
+    text-align: center;
+    padding-right: 500px;
+    margin: 2rem 0 0 0.4rem;
+}
+
+.table .title-table div {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #d3d3d3;
+    font-weight: 700;
+}
+
+.table .post div {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.table div .control {
+    text-align: center;
+    padding-right: 80px;
+}
+
+.table .post .red {
+    color: #006669;
+    padding-right: 200px;
+}
+
+.table .title-table .col-4 {
+ padding-right: 60px;
+}
+
+.table .post .del {
+    color: red;
+}
+
+.table .post .id {
+    font-weight: bold;
+}
+
+
+.details-container {
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 50px;
+    background-color: #aeaeae;
+}
+.details-container h1 {
+    text-align: center;
+    padding-right: 500px;
+}
+
+.details-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.details-container table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.details-container table td:first-child {
+    font-weight: bold;
+}
+
+
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #aeaeae;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 60%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#showFormButton {
+    position: inherit;
+    top: 20px;
+    left: 20px;
+}
+.table .filters {
+    background-color: #303036;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.table .filters label,
+.table .filters select,
+.table .filters input[type="text"],
+.table .filters button,
+.table .filters a {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.table .filters select,
+.table .filters input[type="text"] {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #fff; /* измените цвет фона, если нужно */
+    color: #303036; /* измените цвет текста, если нужно */
+}
+
+.table .filters button {
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #303036;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    cursor: pointer;
+        
+}
+
+.table .filters button:hover {
+    background-color: #303036;
+    color: #fff;
+}
+
+#addVisitButton {
+    margin-bottom: 8px;
+}
+
+#addVisitForm {
+    display: none;
+    /* Добавьте стили для блока формы */
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #aeaeae;
+    margin-top: 20px;
+    margin-bottom: 8px; /* Отступ снизу */
+}
+
+#addVisitForm label,
+#addVisitForm select,
+#addVisitForm button {
+    /* Добавьте стили для меток, выпадающих списков и кнопки в форме */
+    display: block;
+    margin-bottom: 10px;
+}
+
+    #addVisitForm button {
+        padding: 5px 10px;
+        background-color: #fff;
+        color: #303036;
+        border: 1px solid #fff;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+#addVisitForm button:hover {
+    /* Стили для кнопки при наведении */
+    background-color: #303036;
+    color: #fff;
+}

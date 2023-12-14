@@ -1,0 +1,64 @@
+﻿
+<div class="details-container">
+    <h1>Подробная информация</h1>
+    <h3>Информация о визите</h3>
+    <table>
+        <tr>
+            <td>Номер визита:</td>
+            <td>@ViewBag.Visit.Id</td>
+        </tr>
+        <tr>
+            <td>Дата визита:</td>
+            <td>@ViewBag.Visit.Stamp</td>
+        </tr>
+    </table>
+
+    <h3>Информация о враче</h3>
+    <table>
+        <tr>
+            <td>Имя врача:</td>
+            <td>@ViewBag.Doctor.Name</td>
+            
+        </tr>
+        <tr>
+            <td>Телефон специалиста:</td>
+            <td>@ViewBag.Doctor.Phone</td>
+        </tr>
+    </table>
+
+    <h3>Информация о пациенте</h3>
+    <table>
+        <tr>
+            <td>Имя пациента:</td>
+            <td>@ViewBag.Patient.Name</td>
+        </tr>
+        <tr>
+            <td>Адрес пациента:</td>
+            <td>@ViewBag.Patient.Address</td>
+        </tr>
+        <tr>
+            <td>Телефон:</td>
+            <td>@ViewBag.Patient.Phone</td>
+        </tr>
+    </table>
+
+    <h3>Информация о диагнозе и лечении</h3>
+    <table>
+        <tr>
+            <td>Диагноз:</td>
+            <td>@ViewBag.Visit.PlanNavigation.DiagnosisNavigation.Diagnosis1</td>
+        </tr>
+        <tr>
+            <td>Описание диагноза:</td>
+            <td>@ViewBag.Visit.PlanNavigation.DiagnosisNavigation.Description</td>
+        </tr>
+        <tr>
+            <td>Цена:</td>
+            <td>@ViewBag.Visit.PlanNavigation.DiagnosisNavigation.Price</td>
+        </tr>
+        <tr>
+            <td>План лечения:</td>
+            <td>@ViewBag.Visit.PlanNavigation.Treatment</td>
+        </tr>
+    </table>
+</div>

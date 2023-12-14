@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - dentalHospital</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/dentalHospital.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <span class="logo">dentalHospital</span>
+        <nav>
+            <a href="/">Главная</a>
+        </nav>
+    </header>
+    <main>
+        <div class="sidebar col-2">
+            <ul>
+                <li>
+                    <a href="/">Записи</a>
+                </li>
+                <li>
+                    <a asp-controller="Doctors" asp-action="Doctors">Специалисты</a>
+                </li>
+                <li>
+                    <a asp-controller="Patients" asp-action="Patients">Пациенты</a>
+                </li>
+                <li>
+                    <a asp-controller="Diagnoses" asp-action="Diagnoses">Диагнозы</a>
+                </li>
+                <li>
+                    <a asp-controller="Plan" asp-action="Plan">План лечения</a>
+                </li>
+            </ul>
+        </div>
+        @RenderBody()
+    </main>
+    <footer>
+        2023 - dentalHospital
+    </footer>
+</body>
+</html>

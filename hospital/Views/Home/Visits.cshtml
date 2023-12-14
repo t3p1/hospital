@@ -1,0 +1,26 @@
+﻿@model List<Visit>
+@if (Model != null)
+{
+    <div class="table col-10">
+        <div class="row title-table">
+            <h2>Визиты</h2>
+            <div class="col-2">Номер визита</div>
+            <div class="col-2">Дата визита</div>
+            <div class="col-2">Номер плана лечения</div>
+            <div class="col-4">Управление</div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="row table">
+                <div class="col-2">@item.Id</div>
+                <div class="col-2">@item.Stamp</div>
+                <div class="col-2">@item.Plan</div>
+                <div class="col-4"><a href="/">Подробнее</a></div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No data available</p>
+}

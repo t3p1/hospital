@@ -1,0 +1,32 @@
+﻿@model List<Tuple<int, string, string>>
+@using System.Web;
+@if (Model != null)
+{
+    <div class="table col-10">
+        <div class="row title-table">
+            <h2>План лечения</h2>
+            <div class="col-1">Номер плана</div>
+            <div class="col-1">Диагноз</div>
+            <div class="col-4">Планируемое лечение</div>
+            <div class="col-4">Управление</div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="row table">
+                <div class="col-1">@item.Item1</div>
+                <div class="col-1">@item.Item2</div>
+                <div class="col-4">
+                @{
+                    var truncatedDescription = item.Item3.Length > 20 ? item.Item3.Substring(0, 25) + "..." : item.Item3;
+                    <div oninput="truncateText(this, 20);">@Html.Raw(HttpUtility.HtmlEncode(truncatedDescription))</div>
+                }
+                </div>
+                <div class="col-4"><a href="@Url.Action("DetailsPlan", "Plan", new { id = item.Item1 })">Подробнее</a></div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No data available</p>
+}

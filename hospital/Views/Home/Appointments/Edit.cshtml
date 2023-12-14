@@ -1,0 +1,34 @@
+﻿<div>
+    <h2>Редактировать приход в больницу</h2>
+    <form asp-controller="DentalHoes" asp-action="EditVisit" method="post">
+        <div class="form-group">
+            <label for="visitId">Выберите визит:</label>
+            <select id="visitId" name="visitId">
+                @foreach (var visitId in ViewBag.AllVisits)
+                {
+                    <option value="@visitId">@visitId</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="newDoctorId">Выберите нового врача:</label>
+            <select id="newDoctorId" name="newDoctorId">
+                @foreach (var doctorId in ViewBag.AllDoctors)
+                {
+                    <option value="@doctorId">@doctorId</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="newPatientId">Выберите нового пациента:</label>
+            <select id="newPatientId" name="newPatientId">
+                @foreach (var patientId in ViewBag.AllPatients)
+                {
+                    <option value="@patientId">@patientId</option>
+                }
+            </select>
+        </div>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</div>
+
